@@ -14,7 +14,7 @@ A simple script about World Edit, for minecraft bedrock. Helps building complex 
 - type "!help" in chat, to get a list of commands.
 
 # Supported API version:
-### @minecraft/server => 2.0.0-beta
+### @minecraft/server 2.0.0-beta
 
 
 # Features:
