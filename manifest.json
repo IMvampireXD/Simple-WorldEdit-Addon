@@ -1,0 +1,67 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"finnafinest_"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.7.44"
+			],
+			"dash": [
+				"0.11.7"
+			]
+		}
+	},
+	"header": {
+		"name": "finnafinest_'s WorldEdit Addon",
+		"description": "A script about World Edit, for minecraft bedrock. Helps building complex structures quickly and efficiently. \nFeatures: Fill large area of blocks, Copy/Paste. \nCreated by @finnafinest_ \n// Enable Beta-API toggle.",
+		"min_engine_version": [
+			1,
+			21,
+			70
+		],
+		"uuid": "476f50f4-1c1b-425c-8d29-f5c1b5c21b70",
+		"version": [
+			1,
+			0,
+			1
+		]
+	},
+	"modules": [
+		{
+			"type": "data",
+			"uuid": "f0023382-9a1e-4a6e-b23e-a56b971421c3",
+			"version": [
+				1,
+				0,
+				0
+			]
+		},
+		{
+			"type": "script",
+			"language": "javascript",
+			"uuid": "3be761a4-50b6-4868-bda2-72645183a3c0",
+			"entry": "scripts/main.js",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "513f8bd8-2bec-4952-b0f3-feb2ed72f0fa",
+			"version": [
+				1,
+				0,
+				1
+			]
+		},
+		{
+			"module_name": "@minecraft/server",
+			"version": "2.0.0-beta"
+		}
+	]
+}
