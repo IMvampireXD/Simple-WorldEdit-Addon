@@ -30,4 +30,4 @@ This addon, could be not possible without the help of my friends.
 - Helped me fix my spaghetti code => @Gega (Discord: gegacraft)
 - Could be never possible without his ChunkLoader library => @gamezaSRC (Discord: xGAMEZAx)
 
-### Library Used: [ChunkLoader](https://github.com/gamezaSRC/ChunkLoader/tree/main/scripts)
+### Library Used: [ChunkLoader](https://github.com/gamezaSRC/ChunkLoader/)
