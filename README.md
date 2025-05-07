@@ -4,6 +4,7 @@ A simple script about World Edit, for minecraft bedrock. Helps building complex 
 # Installation:
 - Install the latest version of the addon from [Releases](https://github.com/IMvampireXD/Simple-WorldEdit-Addon/releases)
 - Import the addon into Minecraft
+- Enable `Beta-API` toggle
 - Build structures!
 
 # Usage:
@@ -12,10 +13,14 @@ A simple script about World Edit, for minecraft bedrock. Helps building complex 
 - Select second block by right-clicking on the block.
 - type "!help" in chat, to get a list of commands.
 
+# Supported API version:
+### @minecraft/server => 2.0.0-beta
+
+
 # Features:
 - copy/paste blocks
 - fill LARGE area of blocks
-  
+
 It can load chunks outside player's view, So you can even set LARGE area of blocks to fill.
 It also has a percentage of progress how much blocks have been filled.
 In-order to not crash the game, There is a delay between filling block.
