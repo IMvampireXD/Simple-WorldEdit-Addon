@@ -1,5 +1,5 @@
 # Simple-WorldEdit-Addon
-A simple script about World Edit, for minecraft bedrock.
+A simple script about World Edit, for minecraft bedrock. Helps building complex structures quickly and efficiently. 
 
 # Usage:
 - Get the `WorldEdit Wand` from Inventory.
@@ -9,4 +9,9 @@ A simple script about World Edit, for minecraft bedrock.
 
 # Features:
 - copy/paste blocks
-- fill large area of blocks
+- fill LARGE area of blocks
+
+It can load chunks outside player's view, So you can even set LARGE area of blocks to fill.
+It also has a percentage of progress how much blocks have been filled.
+In-order to not crash the game, There is a delay between filling block.
+Because filling a large area at same time can crash the game.
