@@ -26,5 +26,8 @@ Because filling a large area at same time can crash the game.
 
 # Credits:
 This addon, could be not possible without the help of my friends.
-- splitIntoChunks function by => @Minato (github: MinecraftBedrockArabic)
-- Helped me fix my spaghetti code => @Gega (discord: gegacraft)
+- splitIntoChunks function by => @MinecraftBedrockArabic (Discord: Minato)
+- Helped me fix my spaghetti code => @Gega (Discord: gegacraft)
+- Could be never possible without his ChunkLoader library => @gamezaSRC (Discord: xGAMEZAx)
+
+### Library Used: [ChunkLoader](https://github.com/gamezaSRC/ChunkLoader/tree/main/scripts)
