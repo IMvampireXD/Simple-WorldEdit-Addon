@@ -64,7 +64,6 @@ world.beforeEvents.chatSend.subscribe(async ev => {
             count++
         }
         const chunkBlocks = getBlockAtEachChunk(loc1, loc2, player.dimension);
-        const status = [chunkBlocks.length, 0];
         chunkBlocks.forEach(block => {
             const location = player.location
             const spawnDimension = player.dimension
@@ -83,16 +82,16 @@ world.beforeEvents.chatSend.subscribe(async ev => {
             chunk.load(destination).then(async() => {
                 const timeStart = Date.now()
                 player.runJobStatus = false;
-                //had to remove runJob
-                fillBlocks(player, chunks, blockId)
+
+                system.runJob(fillBlocks(player, chunks, blockId))
+                
                 await new Promise(async(r)=>{
                     while (!player.runJobStatus)
                         await system.waitTicks(1);
                     r()
+                    delete player.runJobStatus;
                 })
 
-                status[1]++
-                if (status[1] >= status[0])
                 world.sendMessage(
                     `Filled out ${count} blocks in ${(Date.now() - timeStart) / 1000} seconds`
                 )
@@ -108,19 +107,18 @@ world.beforeEvents.chatSend.subscribe(async ev => {
  * 
  * @param {Player} player 
  */
-async function fillBlocks(player, chunks, block, blockFillOptions = {}) {
+function* fillBlocks(player, chunks, block, blockFillOptions = {}) {
 
     const totalBlocks = getTotalCubes(chunks);
     let filledBlocks = 0;
 
-    for (const [i, chunk] of chunks.entries()) {
+    for (const chunk of chunks) {
         const blockVolume = new BlockVolume(chunk.from, chunk.to)
-
-        await system.waitTicks(20)
+        
         player.dimension.fillBlocks(blockVolume, block, blockFillOptions)
 
         filledBlocks += getCubesInChunk(chunk);
-
+        
         const percent = Math.floor((100 * filledBlocks) / totalBlocks);
 
         player.onScreenDisplay?.setActionBar(`Filling area: ${percent}% complete`);
@@ -211,21 +209,13 @@ function getBlockAtEachChunk(loc1, loc2, dimension) {
 }
 
 function getTotalCubes(chunks) {
-    let totalCubes = 0;
-    chunks.forEach(chunk => {
-        const { from, to } = chunk;
-        const xStep = Math.abs(to.x - from.x) + 1;
-        const yStep = Math.abs(to.y - from.y) + 1;
-        const zStep = Math.abs(to.z - from.z) + 1;
-        totalCubes += xStep * yStep * zStep; 
-    });
-    return totalCubes;
+  return chunks.reduce((total, chunk) => total + calculateCubesInChunk(chunk), 0);
 }
 
-function getCubesInChunk(chunk) {
+function calculateCubesInChunk(chunk) {
     const { from, to } = chunk;
-    const xStep = Math.abs(to.x - from.x) + 1;
-    const yStep = Math.abs(to.y - from.y) + 1;
-    const zStep = Math.abs(to.z - from.z) + 1;
-    return xStep * yStep * zStep;
+    const x = Math.abs(to.x - from.x) + 1;
+    const y = Math.abs(to.y - from.y) + 1;
+    const z = Math.abs(to.z - from.z) + 1;
+    return x * y * z;
 }
