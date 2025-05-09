@@ -209,13 +209,23 @@ function getBlockAtEachChunk(loc1, loc2, dimension) {
 }
 
 function getTotalCubes(chunks) {
-  return chunks.reduce((total, chunk) => total + calculateCubesInChunk(chunk), 0);
+    let totalCubes = 0;
+    chunks.forEach(chunk => {
+        const { from, to } = chunk;
+        const xStep = Math.abs(to.x - from.x) + 1;
+        const yStep = Math.abs(to.y - from.y) + 1;
+        const zStep = Math.abs(to.z - from.z) + 1;
+        totalCubes += xStep * yStep * zStep; 
+    });
+    return totalCubes;
 }
 
-function calculateCubesInChunk(chunk) {
+
+function getCubesInChunk(chunk) {
     const { from, to } = chunk;
     const x = Math.abs(to.x - from.x) + 1;
     const y = Math.abs(to.y - from.y) + 1;
     const z = Math.abs(to.z - from.z) + 1;
+
     return x * y * z;
 }
